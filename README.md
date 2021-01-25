@@ -6,3 +6,5 @@
 - git remote add origin https://github.com/yisa23/vue.git
 - git push origin master
 - git clone https://github.com/yisa23/vue.git
+- git pull origin master
+- git branch
