@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .parent {
+        width: 200px;
+        height: 200px;
+        background-color: paleturquoise;
+      }
+      .son {
+        width: 100px;
+        height: 100px;
+        background-color: palevioletred;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="fn1(1,$event)">按钮</button>
+      <!-- ($event)=>fn1(1,$event) -->
+      <a href="https://www.baidu.com" @click.prevent="fn2">百度</a>
+      <div class="parent" @click="fn3">
+        <div class="son" @click.stop="fn4"></div>
+      </div>
+      <button @click.once="fn5">按钮</button>
+      <input v-model="msg" type="text" @keyup.enter="fn6" />
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data() {
+          return {
+            msg: "",
+          };
+        },
+        methods: {
+          fn1(v, e) {
+            console.log(v, e);
+          },
+          fn2() {
+            console.log("fn2()");
+          },
+          fn3() {
+            console.log("fn3()");
+          },
+          fn4() {
+            console.log("fn4()");
+          },
+          fn5() {
+            console.log("fn5()");
+          },
+          fn6(e) {
+            console.log(e.target.value);
+          },
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>
