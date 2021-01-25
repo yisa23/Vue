@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="msg" />
+      <h1>{{msg}}</h1>
+    </div>
+    <div id="main">
+      <input type="text" v-model="msg" />
+      <h1>{{msg}}</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        // el: "#app",
+        data: {
+          msg: "",
+        },
+      }).$mount("#app");
+      const VM = new Vue({
+        // el: "#main",
+        data: {
+          msg: "",
+        },
+      }).$mount("#main");
+
+      // 数据绑定
+      // DOM 监听
+      setTimeout(() => {
+        VM.msg = "Hello";
+      }, 1000);
+    </script>
+  </body>
+</html>

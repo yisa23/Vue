@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{msg.toUpperCase()}}</h1>
+      <h1 v-text="img"></h1>
+      <h1 v-html="img"></h1>
+      <a :href="url">百度</a>
+      <button @click="fn">按钮</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data() {
+          return {
+            msg: "Hello",
+            img: "<img src='https://picsum.photos/300/150' />",
+            url: "https://www.baidu.com",
+          };
+        },
+        methods: {
+          fn(ev) {
+            console.log("fn()", ev.target.innerText);
+          },
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>
