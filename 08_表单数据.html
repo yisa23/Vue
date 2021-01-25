@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <form action="/">
+        <input type="text" v-model="username" />
+        <br />
+        <input type="radio" v-model="gender" value="male" />
+        <input type="radio" v-model="gender" value="female" />
+        <br />
+        <input type="checkbox" v-model="hobby" value="art" />
+        <input type="checkbox" v-model="hobby" value="music" />
+        <br />
+        <select v-model="city">
+          <option value="bj">北京</option>
+          <option value="sd">山东</option>
+        </select>
+        <br />
+        <textarea v-model="intro"></textarea>
+        <input type="submit" @click.prevent="fn" />
+      </form>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data() {
+          return {
+            username: "",
+            gender: "male",
+            hobby: [],
+            city: "",
+            intro: "",
+          };
+        },
+        methods: {
+          fn() {
+            const { username, gender, hobby, city, intro } = this;
+            const o = { username, gender, hobby, city, intro };
+            console.log("fn()", o);
+          },
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

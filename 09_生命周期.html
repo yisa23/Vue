@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="fn">按钮</button>
+      <p v-show="isShow">xxx</p>
+      <p ref="content">content</p>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data() {
+          return {
+            isShow: true,
+          };
+        },
+        methods: {
+          fn() {
+            this.$destroy();
+          },
+        },
+        beforeCreate() {
+          console.log(this.isShow, "---");
+          console.log("beforeCreate");
+        },
+        created() {
+          // 实现 数据代理 和 数据监视
+          console.log(this.isShow, "---");
+          console.log("created");
+        },
+        beforeMount() {
+          console.log(this.$refs.content, "---");
+          console.log("beforeMount");
+        },
+        mounted() {
+          console.log(this.$refs.content, "---");
+          console.log("mounted");
+          this.timeId = setInterval(() => {
+            this.isShow = !this.isShow;
+            console.log("---");
+          }, 1000);
+        },
+        beforeUpdate() {
+          console.log("beforeUpdate");
+        },
+        updated() {
+          console.log("updated");
+        },
+        beforeDestroy() {
+          console.log("beforeDestroy");
+          clearInterval(this.timeId);
+        },
+        destroyed() {
+          console.log("destroyed");
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>
