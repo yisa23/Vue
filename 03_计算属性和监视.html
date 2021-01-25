@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input v-model="firstName" type="text" />
+      <input v-model="lastName" type="text" />
+      <input v-model="fullName1" type="text" />
+      <input v-model="fullName2" type="text" />
+      <input v-model="fullName3" type="text" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      Vue.config.productionTip = false;
+      const VM = new Vue({
+        el: "#app",
+        data() {
+          return {
+            firstName: "A",
+            lastName: "B",
+            fullName3: "",
+          };
+        },
+        computed: {
+          fullName1() {
+            return this.firstName + "-" + this.lastName;
+          },
+          fullName2: {
+            get() {
+              return this.firstName + "-" + this.lastName;
+            },
+            set(v) {
+              const [firstName, lastName] = v.split("-");
+              this.firstName = firstName;
+              this.lastName = lastName;
+            },
+          },
+        },
+        watch: {
+          firstName(v) {
+            this.fullName3 = v + "-" + this.lastName;
+          },
+        },
+      });
+      console.log(VM);
+      VM.$watch("lastName", function (v) {
+        this.fullName3 = this.firstName + "-" + v;
+      });
+    </script>
+    <script>
+      const o = {
+        firstName: "A",
+        lastName: "B",
+      };
+      Object.defineProperty(o, "fullName", {
+        get() {
+          return this.firstName + "-" + this.lastName;
+        },
+        set(v) {
+          const [firstName, lastName] = v.split("-");
+          this.firstName = firstName;
+          this.lastName = lastName;
+        },
+      });
+      console.log(o.fullName);
+      o.firstName = "C";
+      o.lastName = "D";
+      console.log(o.fullName);
+      o.fullName = "E-F";
+      console.log(o.firstName);
+      console.log(o.lastName);
+    </script>
+  </body>
+</html>

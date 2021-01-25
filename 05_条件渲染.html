@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-if="isShow">显示</p>
+      <p v-else>隐藏</p>
+      <button @click="isShow = !isShow">按钮</button>
+      <p v-show="show">显示</p>
+      <p v-show="!show">隐藏</p>
+      <button @click="show = !show">按钮</button>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data() {
+          return {
+            isShow: true,
+            show: true,
+          };
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

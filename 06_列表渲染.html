@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(person,index) in persons" :key="person.id">
+          <span>{{person.id}}</span>
+          <span>{{person.name}}</span>
+          <span>{{person.age}}</span>
+          <button @click="del(index)">删除</button>
+          <button @click="upd(index)">更新</button>
+        </li>
+      </ul>
+      <input type="text" v-model="keyword" />
+      <ul>
+        <li v-for="(person,index) in filterPersons" :key="person.id">
+          <span>{{person.id}}</span>
+          <span>{{person.name}}</span>
+          <span>{{person.age}}</span>
+        </li>
+      </ul>
+      <button @click="sort = 1">升序</button>
+      <button @click="sort = -1">降序</button>
+      <button @click="sort = 0">复位</button>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data() {
+          return {
+            persons: [
+              { id: 1, name: "Tom1", age: 10 },
+              { id: 2, name: "Tom2", age: 11 },
+              { id: 3, name: "Tom3", age: 12 },
+            ],
+            keyword: "",
+            sort: 0,
+          };
+        },
+        methods: {
+          del(index) {
+            this.persons.splice(index, 1);
+          },
+          upd(index) {
+            const person = {
+              id: Date.now(),
+              name: "Tom" + Date.now(),
+              age: Date.now(),
+            };
+            this.persons.splice(index, 1, person);
+          },
+        },
+        computed: {
+          filterPersons() {
+            const { keyword, persons, sort } = this;
+            const ret = persons.filter((person) => {
+              return person.name.indexOf(keyword) !== -1;
+            });
+            ret.sort(() => sort);
+            return ret;
+          },
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

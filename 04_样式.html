@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .cls01 {
+        color: orchid;
+      }
+      .cls02 {
+        color: palegreen;
+      }
+      .cls03 {
+        background-color: paleturquoise;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <p class="cls03" :class="cls">111</p>
+      <p :class="{cls01:hasCls01}">222</p>
+      <p :class="['cls01']">333</p>
+      <p :style="{color,fontSize,textAlign:'center'}">555</p>
+      <button @click="fn01">按钮</button>
+      <button @click="fn02">按钮</button>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data() {
+          return {
+            cls: "cls01",
+            hasCls01: false,
+            color: "red",
+            fontSize: "30px",
+          };
+        },
+        methods: {
+          fn01() {
+            this.cls = "cls02";
+          },
+          fn02() {
+            this.hasCls01 = !this.hasCls01;
+          },
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>
