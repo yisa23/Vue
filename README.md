@@ -1,3 +1,8 @@
 - [印记中文](https://docschina.org/)
 - [bootcdn](https://www.bootcdn.cn/)
 - git init
+- git add .
+- git commit -m init
+- git remote add origin https://github.com/yisa23/vue.git
+- git push origin master
+- git clone https://github.com/yisa23/vue.git
