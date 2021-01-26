@@ -65,5 +65,12 @@ module.exports = {
     open: true,
     quiet: true,
   },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+    extensions: [".js", ".vue", ".json"],
+  },
+  devtool: "eval-cheap-module-source-map",
   //   mode: "development", // production
 };
