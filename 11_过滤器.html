@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- https://momentjs.com/ -->
+    <div id="app">
+      <p v-cloak>{{time | dateFormat}}</p>
+      <p v-cloak>{{time | dateFormat('HH:mm:ss')}}</p>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.js"></script>
+    <script>
+      //   Vue.filter("dateFormat", function (v, format = "YYYY-MM-DD HH:mm:ss") {
+      //     return moment(v).format(format);
+      //   });
+      new Vue({
+        data() {
+          return {
+            time: Date.now(),
+          };
+        },
+        filters: {
+          dateFormat: function (v, format = "YYYY-MM-DD HH:mm:ss") {
+            return moment(v).format(format);
+          },
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

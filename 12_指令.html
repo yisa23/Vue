@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-directive-1="msg"></p>
+      <p v-directive-2="msg"></p>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      Vue.directive("directive-1", function (el, binding) {
+        el.innerText = binding.value.toUpperCase();
+      });
+      new Vue({
+        data() {
+          return {
+            msg: "vAluE",
+          };
+        },
+        directives: {
+          "directive-2"(el, binding) {
+            el.innerText = binding.value.toLowerCase();
+          },
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-my-directive="msg"></p>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      (function (w) {
+        const MyPlugin = {};
+        MyPlugin.install = function (Vue, options) {
+          Vue.myGlobalMethod = function () {
+            console.log("myGlobalMethod()");
+          };
+
+          Vue.directive("my-directive", function (el, binding) {
+            el.innerText = binding.value;
+          });
+
+          Vue.prototype.$myMethod = function (methodOptions) {
+            console.log("myMethod()");
+          };
+        };
+        w.MyPlugin = MyPlugin;
+      })(window);
+    </script>
+    <script>
+      Vue.use(MyPlugin);
+      Vue.myGlobalMethod();
+      new Vue({
+        data() {
+          return {
+            msg: "value",
+          };
+        },
+        mounted() {
+          this.$myMethod();
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>
