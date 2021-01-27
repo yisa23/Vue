@@ -1,5 +1,7 @@
+// import "@babel/polyfill";
 import Vue from "vue";
 import App from "./App";
+import router from "./router";
 
 Vue.config.productionTip = false;
 
@@ -9,4 +11,5 @@ new Vue({
     Vue.prototype.$bus = this;
   },
   render: (h) => h(App),
+  router,
 }).$mount("#root");

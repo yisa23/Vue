@@ -24,6 +24,10 @@
     <hr />
     <my-search />
     <my-main />
+    <br />
+    <router-link active-class="current" to="/foo">Foo</router-link>
+    <router-link active-class="current" to="/bar">Bar</router-link>
+    <router-view />
   </div>
 </template>
 
@@ -77,4 +81,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.current {
+  font-size: 36px;
+  color: brown;
+}
+</style>

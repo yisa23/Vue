@@ -27,27 +27,25 @@ export default {
     };
   },
   mounted() {
-    this.$bus.$on("search", (q) => {
+    this.$bus.$on("search", async (q) => {
       this.init = false;
       this.loading = true;
-      axios
-        .get("https://api.github.com/search/users", {
+      try {
+        const v = await axios.get("https://api.github.com/search/users", {
           params: {
             q,
           },
-        })
-        .then((v) => {
-          this.loading = false;
-          this.users = v.data.items.map((item) => ({
-            url: item.html_url,
-            avatar: item.avatar_url,
-            name: item.login,
-          }));
-        })
-        .catch((e) => {
-          this.loading = false;
-          this.error = e.message;
         });
+        this.loading = false;
+        this.users = v.data.items.map((item) => ({
+          url: item.html_url,
+          avatar: item.avatar_url,
+          name: item.login,
+        }));
+      } catch (error) {
+        this.loading = false;
+        this.error = error.message;
+      }
     });
   },
 };
