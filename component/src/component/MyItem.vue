@@ -13,7 +13,7 @@ export default {
     index: {
       type: Number,
     },
-    delTodo: Function,
+    // delTodo: Function,
     updTodoComplete: Function,
   },
   methods: {
@@ -22,7 +22,8 @@ export default {
       this.isShow = isShow;
     },
     del() {
-      this.delTodo(this.index);
+      // this.delTodo(this.index);
+      this.$bus.$emit("delTodo", this.index);
     },
   },
   data() {
