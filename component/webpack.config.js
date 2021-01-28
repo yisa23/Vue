@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "static/js/bundle.js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -24,6 +25,15 @@ module.exports = {
                 {
                   useBuiltIns: "usage",
                   corejs: 2,
+                },
+              ],
+            ],
+            plugins: [
+              [
+                "component",
+                {
+                  libraryName: "mint-ui",
+                  style: true,
                 },
               ],
             ],
@@ -78,6 +88,7 @@ module.exports = {
         pathRewrite: { "^/api": "" },
       },
     },
+    historyApiFallback: true,
   },
   resolve: {
     alias: {

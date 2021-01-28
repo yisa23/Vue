@@ -24,10 +24,17 @@
     <hr />
     <my-search />
     <my-main />
-    <br />
+    <hr />
     <router-link active-class="current" to="/foo">Foo</router-link>
     <router-link active-class="current" to="/bar">Bar</router-link>
-    <router-view />
+    <!-- <keep-alive> -->
+    <keep-alive include="Foo">
+      <router-view />
+    </keep-alive>
+    <hr />
+    <mt-button type="primary" @click.native="handleClick">primary</mt-button>
+    <hr />
+    <my-vuex />
   </div>
 </template>
 
@@ -38,6 +45,8 @@ import MyList from "@/component/MyList.vue";
 import MyAxios from "./component/MyAxios.vue";
 import MySearch from "./component/MySearch.vue";
 import MyMain from "./component/MyMain.vue";
+import { Toast } from "mint-ui";
+import MyVuex from "./component/MyVuex.vue";
 
 export default {
   data() {
@@ -45,7 +54,7 @@ export default {
       todos: [],
     };
   },
-  components: { MyHeader, MyList, MyFooter, MyAxios, MySearch, MyMain },
+  components: { MyHeader, MyList, MyFooter, MyAxios, MySearch, MyMain, MyVuex },
   methods: {
     addTodo(todo) {
       // this.todos.push(todo);
@@ -62,6 +71,13 @@ export default {
     },
     updTodoComplete(index, v) {
       this.todos[index].complete = v;
+    },
+    handleClick() {
+      Toast({
+        message: "提示",
+        position: "bottom",
+        duration: 5000,
+      });
     },
   },
   watch: {

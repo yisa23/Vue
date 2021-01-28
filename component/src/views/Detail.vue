@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p>id:{{ $route.params.id }}</p>
+    <!-- <p>id:{{ $route.params.id }}</p> -->
+    <p>id:{{ id }}</p>
     <p>title:{{ detail.title }}</p>
     <p>content:{{ detail.content }}</p>
   </div>
@@ -13,24 +14,38 @@ const messages = [
   { id: 3, title: "message03", content: "content03" },
 ];
 export default {
+  // props: ["id"],
+  // props: ["id", "test"],
+  props: ["id", "test", "msg"],
   data() {
     return {
       detail: {},
     };
   },
   mounted() {
-    this.show(this.$route);
+    // this.show(this.$route);
+    this.show(this.id);
   },
   watch: {
-    $route(to) {
-      this.show(to);
+    // $route(to) {
+    //   this.show(to);
+    // },
+    id(id) {
+      this.show(id);
     },
   },
   methods: {
-    show(route) {
+    // show(route) {
+    //   setTimeout(() => {
+    //     this.detail = messages.find((message) => {
+    //       return message.id === route.params.id * 1;
+    //     });
+    //   }, 1000);
+    // },
+    show(id) {
       setTimeout(() => {
         this.detail = messages.find((message) => {
-          return message.id === route.params.id * 1;
+          return message.id === id * 1;
         });
       }, 1000);
     },

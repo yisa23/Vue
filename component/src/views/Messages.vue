@@ -2,12 +2,23 @@
   <div>
     <ul>
       <li v-for="message in messages" :key="message.id">
-        <router-link :to="`/bar/messages/detail/${message.id}?test=hello`">
+        <!-- <router-link :to="`/bar/messages/detail/${message.id}?test=hello`"> -->
+        <router-link
+          :to="{
+            name: 'detail',
+            params: { id: message.id },
+            query: { test: 'hello' },
+          }"
+        >
           {{ message.title }}
         </router-link>
+        <button @click="push(message.id)">push</button>
+        <button @click="replace(message.id)">replace</button>
       </li>
     </ul>
-    <router-view />
+    <!-- <router-view /> -->
+    <router-view msg="msg" />
+    <button @click="$router.back()">back</button>
   </div>
 </template>
 
@@ -26,6 +37,18 @@ export default {
         { id: 3, title: "message03" },
       ];
     }, 1000);
+  },
+  methods: {
+    replace(id) {
+      this.$router.replace(`/bar/messages/detail/${id}?test=hello`);
+    },
+    push(id) {
+      this.$router.push({
+        name: "detail",
+        params: { id: id },
+        query: { test: "hello" },
+      });
+    },
   },
 };
 </script>

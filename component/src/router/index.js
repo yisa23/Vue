@@ -17,7 +17,19 @@ const routes = [
       {
         path: "messages",
         component: Messages,
-        children: [{ path: "detail/:id", component: Detail }],
+        // children: [{ path: "detail/:id", component: Detail }],
+        // children: [{ path: "detail/:id", component: Detail, props: true }],
+        children: [
+          {
+            name: "detail",
+            path: "detail/:id",
+            component: Detail,
+            props: (route) => ({
+              id: route.params.id,
+              test: route.query.test,
+            }),
+          },
+        ],
       },
       { path: "", redirect: "/bar/news" },
     ],
@@ -27,6 +39,7 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+  mode: "history",
 });
 
 export default router;

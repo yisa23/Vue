@@ -1,9 +1,14 @@
 <template>
-  <div>Foo</div>
+  <div>
+    Foo
+    <input type="text" />
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Foo", //  <keep-alive include="Foo">
+};
 </script>
 
 <style scoped></style>
