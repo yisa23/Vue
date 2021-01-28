@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{msg}}</h1>
+    </div>
+    <script src="./js/observer.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script src="./js/compile.js"></script>
+    <script src="./js/mvvm.js"></script>
+    <script>
+      const VM = new MVVM({
+        el: "#app",
+        data: {
+          msg: "hello",
+        },
+      });
+      console.log(VM);
+    </script>
+  </body>
+</html>

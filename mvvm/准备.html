@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="one">
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+    </div>
+    <script>
+      const ps = document.querySelectorAll("#one p");
+      console.log(ps);
+      console.log([].slice.call(ps));
+      console.log(Array.from(ps));
+      console.log(Array.prototype.slice.call(ps));
+      console.log([...new Set(ps)]);
+    </script>
+    <p id="two">two</p>
+    <script>
+      const el = document.getElementById("two");
+      const attr = el.getAttributeNode("id");
+      const child = el.firstChild;
+      console.log(el.nodeType, el.nodeName);
+      console.log(attr.nodeType, attr.nodeName);
+      console.log(child.nodeType, child.nodeName);
+    </script>
+    <script>
+      const o = { name: "Tom" };
+      Object.defineProperty(o, "intro", {
+        get() {
+          return "my name is " + this.name;
+        },
+        set(v) {
+          this.name = v.replace("my name is ", "");
+        },
+        configurable: false,
+        // value: 1, get
+        // writable: false, set
+        enumerable: false,
+      });
+      o.intro = "my name is YISA";
+      console.log(Object.keys(o));
+      console.log(o.hasOwnProperty("name"), o.hasOwnProperty("intro"));
+      console.log(o.hasOwnProperty("toString"), o.toString);
+    </script>
+    <div id="three">
+      <ul>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+      </ul>
+    </div>
+    <script>
+      const app = document.getElementById("three");
+      const fragment = document.createDocumentFragment();
+      let firstChild;
+      while ((firstChild = app.firstChild)) {
+        fragment.appendChild(firstChild);
+      }
+      const lis = Array.from(fragment.children[0].children);
+      lis.forEach((li) => {
+        li.innerHTML = "222";
+      });
+      app.appendChild(fragment);
+    </script>
+  </body>
+</html>
