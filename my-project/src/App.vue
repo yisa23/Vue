@@ -2,7 +2,7 @@
     <div>
         <my-stylus class="test"/>
         <router-view/>
-        <guide/>
+        <guide v-if="$route.meta.showFooter"/>
     </div>
 </template>
 

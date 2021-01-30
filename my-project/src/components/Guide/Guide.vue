@@ -24,7 +24,10 @@
         name: "Guide",
         methods: {
             fn(path) {
-                this.$router.push(path)
+                // 重复跳转警告
+                if (path !== this.$route.path) {
+                    this.$router.push(path)
+                }
             }
         }
     }

@@ -5,30 +5,47 @@ import Msite from "../views/Msite/Msite";
 import Order from "../views/Order/Order";
 import Profile from "../views/Profile/Profile";
 import Search from "../views/Search/Search";
+import Login from "../views/Login/Login";
 
 
 Vue.use(VueRouter)
 
 const routes = [
     {
+        path: "/login",
+        component: Login
+    },
+    {
         path: "/msite",
-        component: Msite
+        component: Msite,
+        meta: {
+            showFooter: true
+        }
     },
     {
         path: "/order",
-        component: Order
+        component: Order,
+        meta: {
+            showFooter: true
+        }
     },
     {
         path: "/profile",
-        component: Profile
+        component: Profile,
+        meta: {
+            showFooter: true
+        }
     },
     {
         path: "/search",
-        component: Search
+        component: Search,
+        meta: {
+            showFooter: true
+        }
     },
     {
         path: "/",
-        redirect: "/msite"
+        redirect: "/login"
     }
 ]
 
