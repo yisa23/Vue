@@ -12,3 +12,10 @@ export const login = (email, password) => ajax({
     },
     method: 'post'
 })
+
+export const autologin = () => ajax({
+    url: '/autologin',
+    headers: {
+        needToken: true
+    }
+})

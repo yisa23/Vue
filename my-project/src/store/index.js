@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import {getData, login} from '../api'
+import {getData, login, autologin} from '../api'
 
 Vue.use(Vuex)
 
@@ -32,10 +32,16 @@ const m2 = {
             const {status, user} = await login(email, password)
             if (status === 200) {
                 commit('login', user)
+                localStorage.setItem('token', JSON.stringify(user))
                 return Promise.resolve("登陆成功")
             } else {
                 return Promise.reject('登陆失败')
             }
+        },
+        async autologin({commit}) {
+            const {user} = await autologin()
+            commit('login', user)
+            localStorage.setItem('token', JSON.stringify(user))
         }
     },
     mutations: {

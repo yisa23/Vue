@@ -9,9 +9,16 @@
 <script>
     import MyStylus from "./components/MyStylus.vue";
     import Guide from "./components/Guide/Guide";
+    import {mapActions} from 'vuex'
 
     export default {
         components: {Guide, MyStylus},
+        mounted() {
+            this.autologin()
+        },
+        methods: {
+            ...mapActions('m2', ['autologin'])
+        }
     };
 </script>
 
