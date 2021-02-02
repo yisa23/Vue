@@ -9,6 +9,7 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
+        <h3>{{user.email}}</h3>
     </div>
 </template>
 
@@ -21,7 +22,8 @@
     export default {
         name: "Msite",
         computed: {
-            ...mapState('m1', ["msg"])
+            ...mapState('m1', ["msg"]),
+            ...mapState('m2', ["user"]),
         },
         mounted() {
             this.getData()

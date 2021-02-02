@@ -2,7 +2,7 @@ import axios from "axios";
 import qs from 'qs'
 
 const instance = axios.create({
-    baseURL: '/api'
+    baseURL: '/api',
 })
 
 // 请求拦截器

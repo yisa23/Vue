@@ -20,4 +20,10 @@
     }
     ```
 
+### 表单验证
 
+- [vee-validate](https://vee-validate.logaretm.com/v3)
+
+### token
+
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
