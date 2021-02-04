@@ -27,3 +27,7 @@
 ### token
 
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+
+### better-scroll
+
+- [better-scroll](https://github.com/ustbhuangyi/better-scroll/blob/master/README_zh-CN.md)

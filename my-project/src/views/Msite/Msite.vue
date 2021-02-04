@@ -10,6 +10,31 @@
             <div class="swiper-pagination"></div>
         </div>
         <h3>{{user.email}}</h3>
+        <hr>
+        <div class="wrapper">
+            <ul class="content">
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -18,6 +43,7 @@
     import Swiper from 'swiper';
     import 'swiper/swiper-bundle.min.css'
     import _ from 'lodash'
+    import Bscroll from 'better-scroll'
 
     export default {
         name: "Msite",
@@ -39,6 +65,7 @@
                         el: '.swiper-pagination'
                     }
                 })
+                new Bscroll('.wrapper', {})
             })
             console.log(_.chunk(['a', 'b', 'c', 'd'], 3))
             console.log(this._chunk(['a', 'b', 'c', 'd'], 3))
@@ -71,4 +98,7 @@
 
     /deep/ .pagination
      */
+    .wrapper
+        height 100px
+        overflow hidden
 </style>
